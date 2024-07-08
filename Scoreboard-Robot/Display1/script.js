@@ -2,8 +2,8 @@ function updateTimerDisplay(timerId) {
   let timeLeft = parseInt(localStorage.getItem('timer' + timerId + 'TimeLeft'), 10)
   let duration = timerId === 1 ? 10 : 180
   let percentage = ((duration - timeLeft) / duration) * 100
-  let minutes = Math.floor(timeLeft / 10)
-  let seconds = timeLeft % 10
+  let minutes = Math.floor(timeLeft / 60)
+  let seconds = timeLeft % 60
   document.getElementById('timer' + timerId + '-display').style.setProperty('--percentage', percentage + '%')
   document.querySelector('#timer' + timerId + '-display .timer-inner').textContent = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`
 

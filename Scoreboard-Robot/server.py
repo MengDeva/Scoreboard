@@ -46,9 +46,9 @@ display_connected = False
 def update_connections():
     controller_label.config(text=f"Controller Connections: {controller_connections}")
     if display_connected:
-        display_label.config(text="Display Connected: Yes")
+        display_label.config(text="Display Connected: Yes", foreground="green")
     else:
-        display_label.config(text="Display Connected: No")
+        display_label.config(text="Display Connected: No", foreground="red")
     root.after(100, update_connections)
 
 async def handle_controller(websocket, path):
@@ -104,8 +104,8 @@ async def handle_controller(websocket, path):
                         score_data['store2'] += 1
                         score_data['silos'][more] = appending_silo(score_data['silos'][more], 2)
 
-            updateFile(f"{score_data['plant1']*10+score_data['harvest1']*10+score_data['store1']*10}", "VData/score1.txt")
-            updateFile(f"{score_data['plant2']*10+score_data['harvest2']*10+score_data['store2']*10}", "VData/score2.txt")
+            updateFile(f"{score_data['plant1']*10+score_data['harvest1']*10+score_data['store1']*30}", "VData/score1.txt")
+            updateFile(f"{score_data['plant2']*10+score_data['harvest2']*10+score_data['store2']*30}", "VData/score2.txt")
 
             score_data_json = json.dumps(score_data)
             await broadcast_to_displays(score_data_json)
@@ -181,6 +181,11 @@ def run_gui():
     global root, controller_label, display_label
 
     root = tk.Tk()
+    height = 330
+    width = 280
+    x = (root.winfo_screenwidth()//2)-(width//2)
+    y = (root.winfo_screenheight()//2)-(height//2)
+    root.geometry('{}x{}+{}+{}'.format(width,height,x,y))
     root.title("WebSocket Server")
 
     ip = ttk.Label(root, text=f"site: {IPAddr}:8821", font=30)
