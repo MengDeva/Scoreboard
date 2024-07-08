@@ -11,40 +11,60 @@ let plantingTeam1Score = 0
 let plantingTeam2Score = 0
 let harvestingTeam1Score = 0
 let harvestingTeam2Score = 0
-const socket = new WebSocket('ws://192.168.50.12:8834');
+const socket = new WebSocket('ws://192.168.0.101:8834')
 
 socket.addEventListener('open', function (event) {
-    console.log('WebSocket is connected.');
-});
+  console.log('WebSocket is connected.')
+})
 
 socket.addEventListener('message', function (event) {
-    console.log('Message from server ', event.data);
-});
+  console.log('Message from server ', event.data)
+})
 
 function sendData(team, area, index) {
-    const data = {
-        team: team,
-        area: area,
-        index: index
-    };
+  const data = {
+    team: team,
+    area: area,
+    index: index,
+  }
 
-    socket.send(JSON.stringify(data));
-    console.log('Sent:', data);
+  socket.send(JSON.stringify(data))
+  console.log('Sent:', data)
 }
 
-document.getElementById('planting-minus-team1').addEventListener('click', function () {sendData(1, 1, 0);});
-document.getElementById('planting-plus-team1').addEventListener('click', function () {sendData(1, 1, 1);});
-document.getElementById('planting-minus-team2').addEventListener('click', function () {sendData(2, 1, 0);});
-document.getElementById('planting-plus-team2').addEventListener('click', function () {sendData(2, 1, 1);});
+document.getElementById('planting-minus-team1').addEventListener('click', function () {
+  sendData(1, 1, 0)
+})
+document.getElementById('planting-plus-team1').addEventListener('click', function () {
+  sendData(1, 1, 1)
+})
+document.getElementById('planting-minus-team2').addEventListener('click', function () {
+  sendData(2, 1, 0)
+})
+document.getElementById('planting-plus-team2').addEventListener('click', function () {
+  sendData(2, 1, 1)
+})
 
-document.getElementById('harvesting-minus-team1').addEventListener('click', function () {sendData(1, 2, 0);});
-document.getElementById('harvesting-plus-team1').addEventListener('click', function () {sendData(1, 2, 1);});
-document.getElementById('harvesting-minus-team2').addEventListener('click', function () {sendData(2, 2, 0);});
-document.getElementById('harvesting-plus-team2').addEventListener('click', function () {sendData(2, 2, 1);});
+document.getElementById('harvesting-minus-team1').addEventListener('click', function () {
+  sendData(1, 2, 0)
+})
+document.getElementById('harvesting-plus-team1').addEventListener('click', function () {
+  sendData(1, 2, 1)
+})
+document.getElementById('harvesting-minus-team2').addEventListener('click', function () {
+  sendData(2, 2, 0)
+})
+document.getElementById('harvesting-plus-team2').addEventListener('click', function () {
+  sendData(2, 2, 1)
+})
 
-for(let i=1;i<=5;i++){
-  document.getElementById(`r${i}`).addEventListener('click', function () {sendData(1, 3, i-1);});
-  document.getElementById(`b${i}`).addEventListener('click', function () {sendData(2, 3, i-1);});
+for (let i = 1; i <= 5; i++) {
+  document.getElementById(`r${i}`).addEventListener('click', function () {
+    sendData(1, 3, i - 1)
+  })
+  document.getElementById(`b${i}`).addEventListener('click', function () {
+    sendData(2, 3, i - 1)
+  })
 }
 
 function changeColor(columnId, color) {
@@ -175,9 +195,9 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 socket.addEventListener('error', function (event) {
-  console.error('WebSocket error observed:', event);
-});
+  console.error('WebSocket error observed:', event)
+})
 
 socket.addEventListener('close', function (event) {
-  console.log('WebSocket is closed now.');
-});
+  console.log('WebSocket is closed now.')
+})
