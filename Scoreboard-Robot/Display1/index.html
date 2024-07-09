@@ -12,7 +12,7 @@
         }
         .overlay {
             background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(7px);
         }
     </style>
 </head>
@@ -43,9 +43,15 @@
         <div class="flex items-center justify-center w-full">
             <div
                 class="bg-red-500 text-white h-full font-bold px-8 py-4 w-full items-center flex flex-col justify-center text-5xl">
-                <div class="mb-3 flex gap-2"><img src="/public/cylinder1.png" alt="" class="h-14 w-14">S: 0</div>
-                <div class="mb-3 flex gap-2"><img src="/public/football.png" alt="" class="h-14 w-14">H: 0</div>
-                <div class="flex gap-2"><img src="/public/wheat.png" alt="" class="h-14 w-14">P: 0</div>
+                <div class="mb-3 flex gap-2"><img src="/public/cylinder1.png" alt="" class="h-14 w-14">S: <div id="rS1">
+                        0
+                    </div>
+                </div>
+                <div class="mb-3 flex gap-2"><img src="/public/football.png" alt="" class="h-14 w-14">H: <div id="rH1">0
+                    </div>
+                </div>
+                <div class="flex gap-2"><img src="/public/wheat.png" alt="" class="h-14 w-14">P: <div id="rP1">0</div>
+                </div>
             </div>
             <div class="bg-orange-500 text-white text-[195px] font-bold px-8 py-4 shadow-lg w-full items-center flex flex-col"
                 id="timer2-display">
@@ -58,9 +64,15 @@
             </div>
             <div
                 class="bg-blue-500 text-white h-full font-bold px-8 py-4 w-full items-center flex flex-col justify-center text-5xl">
-                <div class="mb-3 flex gap-2"><img src="/public/cylinder1.png" alt="" class="h-14 w-14">S: 0</div>
-                <div class="mb-3 flex gap-2"><img src="/public/football.png" alt="" class="h-14 w-14">H: 0</div>
-                <div class="flex gap-2"><img src="/public/wheat.png" alt="" class="h-14 w-14">P: 0</div>
+                <div class="mb-3 flex gap-2"><img src="/public/cylinder1.png" alt="" class="h-14 w-14">S: <div id="bS2">
+                        0
+                    </div>
+                </div>
+                <div class="mb-3 flex gap-2"><img src="/public/football.png" alt="" class="h-14 w-14">H: <div id="bH2">0
+                    </div>
+                </div>
+                <div class="flex gap-2"><img src="/public/wheat.png" alt="" class="h-14 w-14">P: <div id="bP2">0</div>
+                </div>
             </div>
         </div>
 
@@ -154,7 +166,14 @@
                 </div>
             </div>
         </div>
+        <button id="openModalBtn" class="bg-blue-500 text-white px-4 py-2 rounded">Open Modal</button>
     </section>
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden">
+        <div class="bg-transparent p-8 rounded shadow-md text-center">
+            <img src="/public/Cheyo/red.PNG" alt="" srcset="">
+        </div>
+    </div>
     <!-- Overlay Modal -->
     <div id="overlay" class="fixed inset-0 flex items-center justify-center overlay hidden">
         <div class="bg-white p-48 rounded-lg shadow-lg text-center">

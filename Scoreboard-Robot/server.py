@@ -3,6 +3,8 @@ import websockets
 import json
 import tkinter as tk
 from tkinter import ttk
+from tkinter import *
+from tkinter.ttk import *
 import threading
 import socket
 import time
@@ -181,20 +183,20 @@ def run_gui():
     global root, controller_label, display_label
 
     root = tk.Tk()
-    height = 330
+    height = 430
     width = 280
     x = (root.winfo_screenwidth()//2)-(width//2)
     y = (root.winfo_screenheight()//2)-(height//2)
     root.geometry('{}x{}+{}+{}'.format(width,height,x,y))
     root.title("WebSocket Server")
-
-    ip = ttk.Label(root, text=f"site: {IPAddr}:8821", font=30)
+    
+    ip = ttk.Label(root, text=f"site: {IPAddr}:8821",font=('Ubuntu', 16, 'bold'))
     ip.pack()
 
-    controller_label = ttk.Label(root, text="Controller Connections: 0", font=30)
+    controller_label = ttk.Label(root, text="Controller Connections: 0", font=('Ubuntu', 16))
     controller_label.pack()
 
-    display_label = ttk.Label(root, text="Display Connected: No", font=30)
+    display_label = ttk.Label(root, text="Display Connected: No", font=('Ubuntu', 16))
     display_label.pack()
 
     frame1 = ttk.Frame(root)

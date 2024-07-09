@@ -87,3 +87,17 @@ window.onload = function () {
     checkTimerStatus(timerId)
   })
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const openModalBtn = document.getElementById('openModalBtn')
+  const modal = document.getElementById('modal')
+
+  openModalBtn.addEventListener('click', () => {
+    modal.classList.remove('hidden')
+
+    // Set timeout to close the modal after 5 seconds (5000 milliseconds)
+    setTimeout(() => {
+      modal.classList.add('hidden')
+    }, 5000)
+  })
+})

@@ -11,7 +11,7 @@ let plantingTeam1Score = 0
 let plantingTeam2Score = 0
 let harvestingTeam1Score = 0
 let harvestingTeam2Score = 0
-const socket = new WebSocket('ws://192.168.0.140:8834')
+const socket = new WebSocket('ws://192.168.0.101:8834')
 
 socket.addEventListener('open', function (event) {
   console.log('WebSocket is connected.')
