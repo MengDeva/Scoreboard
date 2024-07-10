@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoreboard Display</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .half-red-half-blue {
+            background: linear-gradient(to right, red 50%, blue 50%);
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(20px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .overlay-text {
+            color: white;
+            font-size: 30em;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class="h-screen">
+    <section class="h-full flex flex-col">
+        <div class="object-cover flex items-center justify-center p-4">
+            <img src="/public/topheader.png" alt="logo">
+        </div>
+        <div class="flex justify-between items-center w-full p-6 half-red-half-blue shadow-lg h-64">
+            <div class="flex items-center gap-4">
+                <img id="team1-logo" src="/public/Logo.png" alt="Logo" width="180" height="180" class=" p-2 w-36">
+                <h1 class="text-4xl font-bold bg-transparent text-slate-50 outline-none" , id="team1-name"></h1>
+            </div>
+            <div class="flex flex-col items-center text-slate-50 ">
+                <div class="text-4xl font-bold">Total Score</div>
+                <div class="text-9xl font-bold" id="team1-total-score">0</div>
+            </div>
+            <div class="flex flex-col items-center text-slate-50 ">
+                <div class="text-4xl font-bold">Total Score</div>
+                <div class="text-9xl font-bold" id="team2-total-score">0</div>
+            </div>
+            <div class="flex items-center gap-4">
+                <h1 class="text-4xl font-bold bg-transparent text-slate-50 outline-none" , id="team2-name"></h1>
+                <img id="team2-logo" src="/public/Logo.png" alt="Logo" width="180" height="180" class=" p-2 w-36">
+            </div>
+        </div>
+        <div class="flex items-center justify-center w-full">
+            <div
+                class="bg-red-500 text-white h-full font-bold px-8 py-4 w-full items-center flex flex-col justify-center text-5xl">
+                <div class="mb-3 flex gap-2"><img src="/public/cylinder1.png" alt="" class="h-14 w-14">S: <div id="rS1">
+                        0
+                    </div>
+                </div>
+                <div class="mb-3 flex gap-2"><img src="/public/football.png" alt="" class="h-14 w-14">H: <div id="rH1">0
+                    </div>
+                </div>
+                <div class="flex gap-2"><img src="/public/wheat.png" alt="" class="h-14 w-14">P: <div id="rP1">0</div>
+                </div>
+            </div>
+            <div class="bg-orange-500 text-white text-[195px] font-bold px-8 py-4 shadow-lg w-full items-center flex flex-col"
+                id="timer2-display">
+                <div class="timer-inner", id="timerd">3:00</div>
+            </div>
+            <div class="flex flex-col items-center hidden">
+                <div class="timer-circle mb-4" id="timer1-display" style="--percentage: 0%;">
+                    <div class="timer-inner">1:00</div>
+                </div>
+            </div>
+            <div
+                class="bg-blue-500 text-white h-full font-bold px-8 py-4 w-full items-center flex flex-col justify-center text-5xl">
+                <div class="mb-3 flex gap-2"><img src="/public/cylinder1.png" alt="" class="h-14 w-14">S: <div id="bS2">
+                        0
+                    </div>
+                </div>
+                <div class="mb-3 flex gap-2"><img src="/public/football.png" alt="" class="h-14 w-14">H: <div id="bH2">0
+                    </div>
+                </div>
+                <div class="flex gap-2"><img src="/public/wheat.png" alt="" class="h-14 w-14">P: <div id="bP2">0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-5 gap-8 bg-gray-300 p-20 shadow-lg">
+            <div class="flex flex-col items-center space-y-4">
+                <div class="flex items-center space-x-2">
+                    <div class="circle w-16 h-16 border-2 border-gray-400 rounded-full flex items-center justify-center"
+                        , id="s1-3">
+                    </div>
+
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="circle w-16 h-16 border-2 border-gray-400 rounded-full flex items-center justify-center"
+                        , id="s1-2">
+                    </div>
+
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="circle w-16 h-16 border-2 border-gray-400 rounded-full flex items-center justify-center"
+                        , id="s1-1">
+                    </div>
+                </div>
+
+            </div>
+            <div class="flex flex-col items-center space-y-4">
+                <div class="flex items-center space-x-2">
+                    <div class="circle w-16 h-16 border-2 border-gray-400 rounded-full flex items-center justify-center"
+                        , id="s2-3">
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="circle w-16 h-16 border-2 border-gray-400 rounded-full flex items-center justify-center"
+                        , id="s2-2">
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="circle w-16 h-16 border-2 border-gray-400 rounded-full flex items-center justify-center"
+                        , id="s2-1">
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col items-center space-y-4">
+                <div class="flex items-center space-x-2">
+                    <div class="circle w-16 h-16 border-2 border-gray-400 rounded-full flex items-center justify-center"
+                        , id="s3-3">
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="circle w-16 h-16 border-2 border-gray-400 rounded-full flex items-center justify-center"
+                        , id="s3-2">
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="circle w-16 h-16 border-2 border-gray-400 rounded-full flex items-center justify-center"
+                        , id="s3-1">
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col items-center space-y-4">
+                <div class="flex items-center space-x-2">
+                    <div class="circle w-16 h-16 border-2 border-gray-400 rounded-full flex items-center justify-center"
+                        , id="s4-3">
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="circle w-16 h-16 border-2 border-gray-400 rounded-full flex items-center justify-center"
+                        , id="s4-2">
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="circle w-16 h-16 border-2 border-gray-400 rounded-full flex items-center justify-center"
+                        , id="s4-1">
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col items-center space-y-4">
+                <div class="flex items-center space-x-2">
+                    <div class="circle w-16 h-16 border-2 border-gray-400 rounded-full flex items-center justify-center"
+                        , id="s5-3">
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="circle w-16 h-16 border-2 border-gray-400 rounded-full flex items-center justify-center"
+                        , id="s5-2">
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="circle w-16 h-16 border-2 border-gray-400 rounded-full flex items-center justify-center"
+                        , id="s5-1">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden">
+        <div class="bg-transparent p-8 rounded shadow-md text-center">
+            <img src="/public/Cheyyo/red.PNG" alt="" srcset="">
+        </div>
+    </div>
+    <!-- Overlay Modal -->
+
+    <div class="overlay" id="overlay">
+        <div class="overlay-text" id="overlay-text"></div>
+    </div>
+
+    <script src="/Display1/listenScript.js"></script>
+</body>
+
+</html>
