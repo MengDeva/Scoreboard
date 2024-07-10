@@ -41,10 +41,13 @@
         </div>
         <div class="flex justify-between items-center w-full p-6 half-red-half-blue shadow-lg h-64">
             <div class="flex items-center gap-4">
-                <img id="team1-logo" src="/public/Logo.png" alt="Logo" width="180" height="180" class=" p-2 w-36">
-                <h1 class="text-4xl font-bold bg-transparent text-slate-50 outline-none" , id="team1-name"></h1>
+                <img id="team1-logo" src="/public/Logo.png" alt="Logo" width="180" height="180" class="p-2 w-36">
+                <div class="text-4xl font-bold text-slate-50 fixed left-44" , id="team1-name"></div>
+                <div class="fixed left-96 h-24 w-24 flex items-center flex-col text-slate-50 font-bold"><img
+                        src="/public/sports-trophy.png" alt="" class="bg-white rounded-lg p-2">WINNER
+                </div>
             </div>
-            <div class="flex flex-col items-center text-slate-50 ">
+            <div class="flex flex-col items-center text-slate-50">
                 <div class="text-4xl font-bold">Total Score</div>
                 <div class="text-9xl font-bold" id="team1-total-score">0</div>
             </div>
@@ -53,8 +56,11 @@
                 <div class="text-9xl font-bold" id="team2-total-score">0</div>
             </div>
             <div class="flex items-center gap-4">
-                <h1 class="text-4xl font-bold bg-transparent text-slate-50 outline-none" , id="team2-name"></h1>
-                <img id="team2-logo" src="/public/Logo.png" alt="Logo" width="180" height="180" class=" p-2 w-36">
+                <div class="fixed right-96 h-24 w-24 flex items-center flex-col text-slate-50 font-bold"><img
+                        src="/public/sports-trophy.png" alt="" class="bg-white rounded-lg p-2">WINNER
+                </div>
+                <div class="text-4xl font-bold text-slate-50 fixed right-44" , id="team2-name"></div>
+                <img id="team2-logo" src="/public/Logo.png" alt="Logo" width="180" height="180" class="p-2 w-36">
             </div>
         </div>
         <div class="flex items-center justify-center w-full">
@@ -67,12 +73,13 @@
                 <div class="mb-3 flex gap-2"><img src="/public/football.png" alt="" class="h-14 w-14">H: <div id="rH1">0
                     </div>
                 </div>
-                <div class="flex gap-2"><img src="/public/wheat.png" alt="" class="h-14 w-14">P: <div id="rP1">0</div>
+                <div class="flex gap-2"><img src="/public/wheat.png" alt="" class="h-14 w-14">P: <div id="rP1">0
+                    </div>
                 </div>
             </div>
             <div class="bg-orange-500 text-white text-[195px] font-bold px-8 py-4 shadow-lg w-full items-center flex flex-col"
                 id="timer2-display">
-                <div class="timer-inner", id="timerd">3:00</div>
+                <div class="timer-inner" , id="timerd">3:00</div>
             </div>
             <div class="flex flex-col items-center hidden">
                 <div class="timer-circle mb-4" id="timer1-display" style="--percentage: 0%;">
@@ -88,11 +95,11 @@
                 <div class="mb-3 flex gap-2"><img src="/public/football.png" alt="" class="h-14 w-14">H: <div id="bH2">0
                     </div>
                 </div>
-                <div class="flex gap-2"><img src="/public/wheat.png" alt="" class="h-14 w-14">P: <div id="bP2">0</div>
+                <div class="flex gap-2"><img src="/public/wheat.png" alt="" class="h-14 w-14">P: <div id="bP2">0
+                    </div>
                 </div>
             </div>
         </div>
-
         <div class="grid grid-cols-5 gap-8 bg-gray-300 p-20 shadow-lg">
             <div class="flex flex-col items-center space-y-4">
                 <div class="flex items-center space-x-2">

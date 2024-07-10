@@ -21,11 +21,73 @@ socket.addEventListener('message', function (event) {
   console.log('Message from server ', event.data)
 })
 
+<<<<<<< Updated upstream
 function sendData(team, area, index) {
+=======
+function sendData(team, area, index, type) {
+>>>>>>> Stashed changes
   const data = {
     team: team,
     area: area,
     index: index,
+<<<<<<< Updated upstream
+=======
+  }
+
+  socket.send(JSON.stringify(data))
+  console.log('Sent:', data)
+}
+
+document.getElementById('planting-minus-team1').addEventListener('click', function () {
+  sendData(1, 1, 0)
+})
+document.getElementById('planting-plus-team1').addEventListener('click', function () {
+  sendData(1, 1, 1)
+})
+document.getElementById('planting-minus-team2').addEventListener('click', function () {
+  sendData(2, 1, 0)
+})
+document.getElementById('planting-plus-team2').addEventListener('click', function () {
+  sendData(2, 1, 1)
+})
+
+document.getElementById('harvesting-minus-team1').addEventListener('click', function () {
+  sendData(1, 2, 0)
+})
+document.getElementById('harvesting-plus-team1').addEventListener('click', function () {
+  sendData(1, 2, 1)
+})
+document.getElementById('harvesting-minus-team2').addEventListener('click', function () {
+  sendData(2, 2, 0)
+})
+document.getElementById('harvesting-plus-team2').addEventListener('click', function () {
+  sendData(2, 2, 1)
+})
+
+for (let i = 1; i <= 5; i++) {
+  document.getElementById(`r${i}`).addEventListener('click', function () {
+    sendData(1, 3, i - 1)
+  })
+  document.getElementById(`b${i}`).addEventListener('click', function () {
+    sendData(2, 3, i - 1)
+  })
+  document.getElementById(`u${i}`).addEventListener('click', function () {
+    sendData(0, 3, i - 1)
+  })
+}
+
+function changeColor(columnId, color) {
+  const column = document.getElementById(columnId)
+  const circles = column.getElementsByClassName('circle')
+
+  for (let i = circles.length - 1; i >= 0; i--) {
+    // From bottom to top
+    const circle = circles[i]
+    if (circle.dataset.color === 'none') {
+      updateCircle(circle, color)
+      break
+    }
+>>>>>>> Stashed changes
   }
 
   socket.send(JSON.stringify(data))
